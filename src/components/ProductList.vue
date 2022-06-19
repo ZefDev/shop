@@ -47,7 +47,7 @@ export default {
     methods:{
         getListProducts(){
             const options = {
-                url: 'https://api-shop-scandi.000webhostapp.com/product/list', //
+                url: 'https://api-shop-scandi.000webhostapp.com/product/list',
                 method: 'GET',
             }
             this.$axios(options)
@@ -59,7 +59,7 @@ export default {
         deleteProducts(){
             this.selectedProducts.join()
             const options = {
-                url: 'https://api-shop-scandi.000webhostapp.com/product/delete',//'https://api-shop-scandi.000webhostapp.com/product/delete'
+                url: 'https://api-shop-scandi.000webhostapp.com/product/delete',
                 method: 'POST',
                 data: {
                     productsIds: this.selectedProducts

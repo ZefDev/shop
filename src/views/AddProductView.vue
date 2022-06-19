@@ -279,8 +279,7 @@ export default {
                 console.log(response.data);
                 this.$router.push('/');
             });
-
-            alert(JSON.stringify(this.form))
+            
         },
         onReset(event) {
             event.preventDefault()
