@@ -284,16 +284,11 @@ export default {
         },
         onReset(event) {
             event.preventDefault()
-            // Reset our form values
+
             this.form.sku = ''
             this.form.name = ''
             this.form.productType = null
 
-            // Trick to reset/clear native browser form validation state
-            this.show = false
-            this.$nextTick(() => {
-                this.show = true
-            });
             this.$router.push('/');
         },
         validateState(name) {
