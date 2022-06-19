@@ -26,7 +26,7 @@
 </template>
 
 <script>
-import axios from 'axios';
+
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 export default {
@@ -46,7 +46,11 @@ export default {
 
     methods:{
         getListProducts(){
-            axios.get('https://api-shop-scandi.000webhostapp.com/product/list')
+            const options = {
+                url: 'https://api-shop-scandi.000webhostapp.com/product/list', //
+                method: 'GET',
+            }
+            this.$axios(options)
             .then(response => {
                 console.log(response.data);
                 this.products = response.data;
@@ -54,9 +58,14 @@ export default {
         },
         deleteProducts(){
             this.selectedProducts.join()
-            const data = { productsIds: this.selectedProducts };
-
-            axios.post('https://api-shop-scandi.000webhostapp.com/product/delete', data)
+            const options = {
+                url: 'https://api-shop-scandi.000webhostapp.com/product/delete',//'https://api-shop-scandi.000webhostapp.com/product/delete'
+                method: 'POST',
+                data: {
+                    productsIds: this.selectedProducts
+                }
+            }
+            this.$axios(options)
             .then(response => {
                 console.log(response.data);
                 this.getListProducts();

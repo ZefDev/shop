@@ -157,7 +157,7 @@
 
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
-import axios from 'axios';
+
 import { validationMixin } from "vuelidate";
 import { required, between} from 'vuelidate/lib/validators'
 
@@ -267,17 +267,19 @@ export default {
                 return;
             }
 
-            const data = {
-                product: this.form,
-            };
-
-
-            axios.post('https://api-shop-scandi.000webhostapp.com/product/create', data)
+            const options = {
+                url: 'https://api-shop-scandi.000webhostapp.com/product/create',
+                method: 'POST',
+                data: {
+                    product: this.form,
+                }
+            }
+            this.$axios(options)
             .then(response => {
                 console.log(response.data);
+                this.$router.push('/');
             });
 
-            this.$router.push('/');
             alert(JSON.stringify(this.form))
         },
         onReset(event) {
