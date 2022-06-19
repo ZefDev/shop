@@ -46,7 +46,7 @@ export default {
 
     methods:{
         getListProducts(){
-            axios.get('https://api-shop-scandi.000webhostapp.com/product/list')
+            axios.get('/api/product/list')
             .then(response => {
                 console.log(response.data);
                 this.products = response.data;
@@ -56,7 +56,7 @@ export default {
             this.selectedProducts.join()
             const data = { productsIds: this.selectedProducts };
 
-            axios.post('https://api-shop-scandi.000webhostapp.com/product/delete', data)
+            axios.post('/api/product/delete', data)
             .then(response => {
                 console.log(response.data);
                 this.getListProducts();

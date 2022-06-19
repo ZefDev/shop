@@ -271,7 +271,8 @@ export default {
                 product: this.form,
             };
 
-            axios.post('https://api-shop-scandi.000webhostapp.com/product/create', data)
+
+            axios.post('/api/product/create', data)
             .then(response => {
                 console.log(response.data);
             });
